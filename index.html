@@ -3,51 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Word Problem Adventure</title>
+<title>Word Problem Quest</title>
 <style>
-  :root{--bg1:#ffe9a8;--bg2:#ffc2d9;--ink:#2b2d42;--green:#2fbf71;--red:#ef476f;--blue:#118ab2;--yellow:#ffd166;--card:#fff}
+  :root{--bg1:#d4fbe8;--bg2:#ffe3b8;--ink:#23304a;--green:#2fbf71;--red:#ef476f;--blue:#1b6ca8;--yellow:#ffd166;--card:#fff}
   *{box-sizing:border-box}
-  body{margin:0;font-family:"Comic Sans MS","Trebuchet MS",system-ui,sans-serif;color:var(--ink);
+  body{margin:0;font-family:"Trebuchet MS",system-ui,sans-serif;color:var(--ink);
     background:linear-gradient(135deg,var(--bg1),var(--bg2));min-height:100vh;display:flex;justify-content:center;padding:16px}
-  .app{width:100%;max-width:640px}
-  .card{background:var(--card);border-radius:28px;padding:24px;box-shadow:0 10px 0 rgba(0,0,0,.08);margin-bottom:16px}
+  .app{width:100%;max-width:680px}
+  .card{background:var(--card);border-radius:26px;padding:24px;box-shadow:0 10px 0 rgba(0,0,0,.08);margin-bottom:16px}
   h1{margin:0 0 8px;font-size:2.1rem;text-align:center;color:var(--blue)}
   h2{margin:0 0 12px;text-align:center}
-  p.lead{text-align:center;font-size:1.15rem;margin:8px 0 18px}
-  .big{font-size:4rem;text-align:center;margin:4px 0}
-  button{font-family:inherit;cursor:pointer;border:none;border-radius:20px;font-weight:bold}
-  .go{display:block;margin:0 auto;background:var(--green);color:#fff;font-size:1.5rem;padding:14px 36px;box-shadow:0 6px 0 #1f8f53}
+  p.lead{text-align:center;font-size:1.1rem;margin:8px 0 18px;line-height:1.5}
+  .big{font-size:3.8rem;text-align:center;margin:4px 0}
+  button{font-family:inherit;cursor:pointer;border:none;border-radius:18px;font-weight:bold}
+  .go{display:block;margin:0 auto;background:var(--green);color:#fff;font-size:1.4rem;padding:14px 36px;box-shadow:0 6px 0 #1f8f53}
   .go:active{transform:translateY(4px);box-shadow:0 2px 0 #1f8f53}
   .top{display:flex;justify-content:space-between;align-items:center;font-weight:bold;margin-bottom:8px}
-  .bar{height:16px;background:#eee;border-radius:10px;overflow:hidden;margin-bottom:16px}
+  .bar{height:14px;background:#eee;border-radius:10px;overflow:hidden;margin-bottom:16px}
   .bar>div{height:100%;background:linear-gradient(90deg,var(--yellow),var(--green));width:0;transition:width .4s}
-  .emoji{font-size:3rem;text-align:center;letter-spacing:4px;min-height:3.4rem;word-break:break-all}
-  .q{font-size:1.45rem;line-height:1.5;text-align:center;margin:10px 0 18px}
+  .emoji{font-size:2.6rem;text-align:center;letter-spacing:4px;min-height:3rem;word-break:break-all}
+  .q{font-size:1.3rem;line-height:1.55;text-align:center;margin:10px 0 16px}
   .listen{display:block;margin:0 auto 14px;background:var(--yellow);font-size:1rem;padding:8px 18px;box-shadow:0 4px 0 #d9a93b}
   .opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .opt{background:#e8f4fa;border:4px solid var(--blue);color:var(--ink);font-size:2rem;padding:16px 8px;box-shadow:0 5px 0 rgba(0,0,0,.12)}
+  .opt{background:#e8f1fa;border:4px solid var(--blue);color:var(--ink);font-size:1.8rem;padding:16px 8px;box-shadow:0 5px 0 rgba(0,0,0,.12)}
   .opt:disabled{cursor:default}
   .opt.right{background:var(--green);border-color:#1f8f53;color:#fff}
   .opt.wrong{background:var(--red);border-color:#b32e50;color:#fff}
-  .fb{min-height:3.2rem;text-align:center;font-size:1.25rem;font-weight:bold;margin-top:16px}
+  .fb{min-height:3.2rem;text-align:center;font-size:1.15rem;font-weight:bold;margin-top:16px;line-height:1.4}
   .fb.ok{color:#1f8f53}.fb.no{color:#b32e50}
-  .next{display:none;margin:12px auto 0;background:var(--blue);color:#fff;font-size:1.3rem;padding:12px 30px;box-shadow:0 5px 0 #0b6280}
-  .stars{font-size:2.6rem;text-align:center}
+  .next{display:none;margin:12px auto 0;background:var(--blue);color:#fff;font-size:1.25rem;padding:12px 30px;box-shadow:0 5px 0 #124a73}
+  .stars{font-size:2.4rem;text-align:center}
   .score{font-size:2.6rem;text-align:center;font-weight:bold;color:var(--green)}
-  .review{margin-top:14px;font-size:1.05rem}
-  .review div{background:#fff4f6;border-left:6px solid var(--red);padding:10px 12px;border-radius:10px;margin-bottom:10px}
+  .review{margin-top:14px;font-size:1.02rem}
+  .review div{background:#fff4f6;border-left:6px solid var(--red);padding:10px 12px;border-radius:10px;margin-bottom:10px;line-height:1.45}
   .hidden{display:none}
-  @media(max-width:420px){.opt{font-size:1.7rem}.q{font-size:1.25rem}}
+  @media(max-width:420px){.opt{font-size:1.5rem}.q{font-size:1.15rem}}
 </style>
 </head>
 <body>
 <div class="app">
 
   <div id="start" class="card">
-    <div class="big">🦁🐘🐒</div>
-    <h1>Word Problem Adventure</h1>
-    <p class="lead">Read each story. Add or take away to find the answer!<br>There are <b>50</b> stories. Ready?</p>
-    <button class="go" id="startBtn">Let's Go! 🚀</button>
+    <div class="big">🧭🗺️🏆</div>
+    <h1>Word Problem Quest</h1>
+    <p class="lead">Read each story carefully, work it out, then pick your answer.<br>You will use adding, taking away, times, sharing, money, time and measuring.<br>There are <b>50</b> stories. Ready?</p>
+    <button class="go" id="startBtn">Start the Quest 🚀</button>
   </div>
 
   <div id="quiz" class="card hidden">
@@ -72,68 +72,73 @@
 </div>
 
 <script>
-// [story text, first number, second number, operation, picture]
-const ADD = [
- ["Mia has 3 red apples and 4 green apples. How many apples does she have in all?",3,4,"+","🍎🍎🍎🍏🍏🍏🍏"],
- ["5 birds sit on a fence. 2 more birds fly over to join them. How many birds are on the fence now?",5,2,"+","🐦🐦🐦🐦🐦🐦🐦"],
- ["Tom has 6 toy cars. His dad gives him 3 more toy cars. How many toy cars does Tom have now?",6,3,"+","🚗🚗🚗🚗🚗🚗🚙🚙🚙"],
- ["There are 4 ducks in a pond. 5 more ducks swim in. How many ducks are in the pond now?",4,5,"+","🦆🦆🦆🦆🦆🦆🦆🦆🦆"],
- ["Sara picks 7 flowers in the morning and 2 flowers in the afternoon. How many flowers did she pick?",7,2,"+","🌸🌸🌸🌸🌸🌸🌸🌼🌼"],
- ["8 children are on the bus. 3 more children get on. How many children are on the bus now?",8,3,"+","🚌"],
- ["Ben ate 5 cookies on Monday and 5 cookies on Tuesday. How many cookies did he eat?",5,5,"+","🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪"],
- ["A shelf has 9 books. Mom puts 4 more books on the shelf. How many books are on the shelf now?",9,4,"+","📚"],
- ["6 frogs sit on a log. 6 frogs sit on the grass. How many frogs are there in all?",6,6,"+","🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸🐸"],
- ["Lily has 10 stickers. Her friend gives her 5 more stickers. How many stickers does Lily have now?",10,5,"+","⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐"],
- ["There are 7 red balloons and 8 blue balloons at the party. How many balloons are there altogether?",7,8,"+","🎈🎈🎈🎈🎈🎈🎈"],
- ["A farmer has 9 cows and 7 sheep. How many animals does the farmer have in all?",9,7,"+","🐄🐑"],
- ["There are 12 fish in a tank. The shop puts in 4 more fish. How many fish are in the tank now?",12,4,"+","🐟🐠🐟🐠🐟🐠"],
- ["Omar has 8 pencils. His teacher gives him 6 more pencils. How many pencils does Omar have now?",8,6,"+","✏️✏️✏️✏️✏️✏️✏️✏️"],
- ["11 kids are playing in the park. 5 more kids come to play. How many kids are playing now?",11,5,"+","🛝🧒👧"],
- ["3 cats are sleeping and 9 cats are awake. How many cats are there in all?",3,9,"+","🐱😺🐈"],
- ["Anna drew 4 stars on Monday and 8 stars on Tuesday. How many stars did she draw?",4,8,"+","✨🌟⭐"],
- ["A basket has 13 oranges. Dad puts in 3 more oranges. How many oranges are in the basket now?",13,3,"+","🍊🍊🍊🍊🍊"],
- ["There are 9 boys and 9 girls in Grade 1. How many children are in the class?",9,9,"+","👦👧"],
- ["Jack scored 7 points in the first game and 6 points in the second game. How many points did he score in all?",7,6,"+","⚽🥅"],
- ["A garden has 14 tulips and 5 roses. How many flowers are in the garden?",14,5,"+","🌷🌹"],
- ["There are 10 candies in a bag and 10 candies in a jar. How many candies are there in all?",10,10,"+","🍬🍭🍬🍭"],
- ["6 ants are carrying crumbs. 7 more ants come to help. How many ants are there now?",6,7,"+","🐜🐜🐜🐜🐜🐜🐜"],
- ["There are 15 books on the table and 4 books on the floor. How many books are there in all?",15,4,"+","📖📘📗"],
- ["Zoe has 8 marbles. She finds 9 more marbles in the toy box. How many marbles does she have now?",8,9,"+","🔵🔴🟢🟡"]
-];
-const SUB = [
- ["Dad had 9 balloons. 4 balloons popped. How many balloons are left?",9,4,"-","🎈🎈🎈🎈🎈💥"],
- ["There are 8 cookies on a plate. Amy eats 3 cookies. How many cookies are left?",8,3,"-","🍪🍪🍪🍪🍪"],
- ["10 birds are in a tree. 6 birds fly away. How many birds are still in the tree?",10,6,"-","🌳🐦🐦🐦🐦"],
- ["Leo has 7 pencils. He gives 2 pencils to his friend. How many pencils does Leo have now?",7,2,"-","✏️✏️✏️✏️✏️"],
- ["There are 12 apples in a basket. Mum takes out 5 apples. How many apples are left?",12,5,"-","🍎🍎🍎🍎🍎🍎🍎"],
- ["15 children are at the park. 8 children go home. How many children are still at the park?",15,8,"-","🌳🧒👧"],
- ["A bakery has 14 muffins. It sells 6 muffins. How many muffins are left?",14,6,"-","🧁🧁🧁🧁🧁🧁🧁🧁"],
- ["Nina has 9 stickers. She gives 3 stickers to her sister. How many stickers does Nina have left?",9,3,"-","⭐⭐⭐⭐⭐⭐"],
- ["11 frogs are on a log. 4 frogs jump into the pond. How many frogs are still on the log?",11,4,"-","🐸🐸🐸🐸🐸🐸🐸"],
- ["Sam has 13 crayons. 7 of them are broken. How many crayons are not broken?",13,7,"-","🖍️🖍️🖍️🖍️🖍️🖍️"],
- ["There are 16 flowers in a vase. 9 flowers are old and thrown away. How many flowers are left?",16,9,"-","💐🌷🌷🌷🌷🌷🌷🌷"],
- ["18 cars are in a parking lot. 10 cars drive away. How many cars are left?",18,10,"-","🚗🚙🚕🚗"],
- ["Kim has 20 stickers. She uses 5 stickers on her notebook. How many stickers does she have left?",20,5,"-","📒⭐⭐⭐⭐⭐"],
- ["A shelf had 17 books. Children borrowed 8 books. How many books are left on the shelf?",17,8,"-","📚📚📚📚📚📚📚📚📚"],
- ["There are 5 candles on a cake. 2 candles are blown out. How many candles are still lit?",5,2,"-","🎂🕯️🕯️🕯️"],
- ["There are 19 children in the class. 9 of them are boys. How many are girls?",19,9,"-","👧👧👧👧👧👧👧👧👧👧"],
- ["A box has 14 pencils. Ravi loses 5 pencils. How many pencils are left in the box?",14,5,"-","📦✏️✏️✏️✏️"],
- ["12 birds are on a wire. 3 birds fly away. How many birds are left on the wire?",12,3,"-","🐦🐦🐦🐦🐦🐦🐦🐦🐦"],
- ["Raj had 15 grapes. He ate 6 grapes. How many grapes does Raj have left?",15,6,"-","🍇🍇🍇🍇🍇🍇🍇🍇🍇"],
- ["There are 8 pizza slices. The family eats 4 slices. How many slices are left?",8,4,"-","🍕🍕🍕🍕"],
- ["Dad blows up 13 balloons. 4 balloons pop. How many balloons are left?",13,4,"-","🎈🎈🎈🎈🎈🎈🎈🎈🎈"],
- ["The class has 18 chairs. 12 chairs have children on them. How many chairs are empty?",18,12,"-","🪑🪑🪑🪑🪑🪑"],
- ["Ella has 16 beads. She loses 7 beads. How many beads does she have now?",16,7,"-","📿🔴🔵🟡🟢"],
- ["There are 10 ice creams in the freezer. 3 ice creams melt. How many ice creams are not melted?",10,3,"-","🍦🍦🍦🍦🍦🍦🍦"],
- ["Frank has 20 coins. He spends 11 coins at the shop. How many coins does he have left?",20,11,"-","🪙🪙🪙🪙🪙🪙🪙🪙🪙"]
-];
+// [story, correct answer, common mistakes, picture, working shown after answering, optional prefix]
+const QUESTIONS = [
+ // ---- adding and subtracting within 1,000 ----
+ ["The school library has 346 fiction books and 258 non-fiction books. How many books does it have altogether?",604,[88,594],"📚📖","346 + 258 = 604"],
+ ["A farm stand sold 475 apples on Saturday and 289 apples on Sunday. How many apples did it sell in all?",764,[186,754],"🍎🍏","475 + 289 = 764"],
+ ["A stadium has 812 seats. 467 seats are filled. How many seats are empty?",345,[1279,355],"🏟️","812 − 467 = 345"],
+ ["Ms. Park printed 650 pages. Her class used 378 pages. How many pages are left?",272,[1028,372],"🖨️📄","650 − 378 = 272"],
+ ["The zoo had 529 visitors in the morning and 374 visitors in the afternoon. How many visitors came that day?",903,[155,893],"🦁🐘🦒","529 + 374 = 903"],
+ ["A cinema sold tickets for 635 of its 900 seats. How many seats were not sold?",265,[1535,275],"🎬🍿","900 − 635 = 265"],
+ ["Pete collected 248 shells. Rosa collected 197 shells. How many shells did they collect together?",445,[51,435],"🐚🐚","248 + 197 = 445"],
+ ["A bakery made 720 rolls. It sold 456 rolls. How many rolls are left?",264,[1176,274],"🥖🥐","720 − 456 = 264"],
+ ["A school has 583 students. 249 of them are in the lower grades. How many students are not in the lower grades?",334,[832,344],"🏫🎒","583 − 249 = 334"],
+ ["A family drove 387 miles on the first day and 296 miles on the second day. How many miles did they drive in all?",683,[91,673],"🚗🛣️","387 + 296 = 683"],
 
-// Mix: alternate addition and subtraction
-const QUESTIONS = [];
-for (let i = 0; i < 25; i++) { QUESTIONS.push(ADD[i]); QUESTIONS.push(SUB[i]); }
+ // ---- multiplication ----
+ ["There are 6 boxes of crayons. Each box has 8 crayons. How many crayons are there in all?",48,[14,54],"🖍️🖍️🖍️🖍️🖍️🖍️","6 × 8 = 48"],
+ ["A hall has 7 rows of chairs. Each row has 9 chairs. How many chairs are in the hall?",63,[16,56],"🪑🪑🪑","7 × 9 = 63"],
+ ["Mia buys 9 packs of stickers. Each pack has 5 stickers. How many stickers does she buy?",45,[14,54],"⭐⭐⭐","9 × 5 = 45"],
+ ["Each school bus holds 8 children. How many children can ride on 7 buses?",56,[15,48],"🚌🚌🚌","7 × 8 = 56"],
+ ["A bookcase has 4 shelves. Each shelf holds 12 books. How many books can the bookcase hold?",48,[16,46],"📚📚📚📚","4 × 12 = 48"],
+ ["A tray holds 10 muffins. A baker fills 9 trays. How many muffins is that?",90,[19,80],"🧁🧁🧁","9 × 10 = 90"],
+ ["Maya practises piano for 25 minutes each day. How many minutes does she practise in 3 days?",75,[28,65],"🎹⏰","25 × 3 = 75"],
+ ["A shop sells 6 bags of oranges. Each bag has 7 oranges. How many oranges are there?",42,[13,48],"🍊🍊🍊","6 × 7 = 42"],
+ ["5 friends each have 11 trading cards. How many cards do they have altogether?",55,[16,50],"🃏🃏🃏","5 × 11 = 55"],
+ ["A garden has 9 rows of plants. Each row has 6 plants. How many plants are in the garden?",54,[15,63],"🌱🌱🌱","9 × 6 = 54"],
+
+ // ---- division ----
+ ["36 cookies are shared equally among 4 children. How many cookies does each child get?",9,[32,8],"🍪🍪🍪🍪","36 ÷ 4 = 9"],
+ ["Jin has 56 stickers. He puts 7 stickers on each page. How many pages does he fill?",8,[49,63],"📒⭐","56 ÷ 7 = 8"],
+ ["45 apples are packed into bags of 5. How many bags are needed?",9,[40,50],"🍎🛍️","45 ÷ 5 = 9"],
+ ["72 chairs are set out in 8 equal rows. How many chairs are in each row?",9,[64,80],"🪑🪑","72 ÷ 8 = 9"],
+ ["63 students are split into 9 equal teams. How many students are on each team?",7,[54,72],"🏃🏃🏃","63 ÷ 9 = 7"],
+ ["30 crayons are shared equally into 6 boxes. How many crayons go in each box?",5,[24,36],"🖍️📦","30 ÷ 6 = 5"],
+ ["A teacher has 48 pencils. She puts the same number in each of 6 cups. How many pencils are in each cup?",8,[42,54],"✏️✏️✏️","48 ÷ 6 = 8"],
+ ["100 stickers are shared equally onto 4 posters. How many stickers are on each poster?",25,[96,104],"🖼️⭐","100 ÷ 4 = 25"],
+
+ // ---- two-step problems ----
+ ["Ava buys 4 packs of pencils. Each pack has 6 pencils. She gives 5 pencils to her friend. How many pencils does Ava have left?",19,[29,10],"✏️✏️✏️✏️","4 × 6 = 24, then 24 − 5 = 19"],
+ ["Sam has $20. He buys 3 books that cost $4 each. How much money does Sam have left?",8,[16,32],"📘📘📘💵","3 × 4 = 12, then 20 − 12 = 8","$"],
+ ["A teacher has 5 boxes with 8 markers in each box and 7 loose markers. How many markers does she have in all?",47,[40,13],"🖊️📦","5 × 8 = 40, then 40 + 7 = 47"],
+ ["A hall has 6 rows of 7 chairs. 5 chairs are taken away. How many chairs are left?",37,[42,47],"🪑🪑🪑","6 × 7 = 42, then 42 − 5 = 37"],
+ ["A farmer packs 36 eggs into cartons of 6. He sells 4 cartons. How many cartons are left?",2,[6,10],"🥚🥚📦","36 ÷ 6 = 6, then 6 − 4 = 2"],
+ ["Lena buys 2 notebooks that cost $3 each and a pencil that costs $2. How much does she spend in all?",8,[5,10],"📒📒✏️","2 × 3 = 6, then 6 + 2 = 8","$"],
+ ["There are 24 children at a party. 8 children go home. The rest are put into 4 equal groups. How many children are in each group?",4,[6,16],"🎉👧👦","24 − 8 = 16, then 16 ÷ 4 = 4"],
+ ["Dan has 3 bags with 9 marbles in each bag. He loses 10 marbles. How many marbles does Dan have now?",17,[27,37],"🔵🔵🔵","3 × 9 = 27, then 27 − 10 = 17"],
+ ["Tom reads 15 pages each day for 4 days. Then he reads 12 more pages. How many pages does he read in all?",72,[27,60],"📖📖","15 × 4 = 60, then 60 + 12 = 72"],
+ ["There are 30 students in a class. 5 are absent. The rest sit 5 to a table. How many tables are used?",5,[6,25],"🪑🧒","30 − 5 = 25, then 25 ÷ 5 = 5"],
+
+ // ---- time, money and measurement ----
+ ["Soccer practice starts at 4:10 and ends at 5:00. How many minutes long is practice?",50,[60,40],"⚽🕓","4:10 to 5:00 is 50 minutes"],
+ ["Ali read for 25 minutes before dinner and 35 minutes after dinner. How many minutes did he read in all?",60,[10,50],"📖⏰","25 + 35 = 60"],
+ ["A rectangle is 8 cm long and 5 cm wide. What is its perimeter in centimetres?",26,[13,40],"▭📏","8 + 5 + 8 + 5 = 26"],
+ ["A square garden has sides of 9 feet. What is the perimeter of the garden in feet?",36,[18,81],"🌻🟩","9 + 9 + 9 + 9 = 36"],
+ ["A ribbon is 100 cm long. Kai cuts off a piece that is 35 cm long. How many centimetres of ribbon are left?",65,[135,75],"🎀✂️","100 − 35 = 65"],
+ ["A bucket holds 18 liters of water. Mum pours out 7 liters. How many liters are left in the bucket?",11,[25,12],"🪣💧","18 − 7 = 11"],
+ ["A bag of rice weighs 9 kg. A bag of beans weighs 4 kg. How many kilograms heavier is the rice?",5,[13,6],"🍚🫘⚖️","9 − 4 = 5"],
+ ["A toy costs $27. Kim has $15. How much more money does Kim need to buy the toy?",12,[42,11],"🧸💵","27 − 15 = 12","$"],
+
+ // ---- fractions and equal parts ----
+ ["A pizza is cut into 8 equal slices. Ben eats 3 slices. How many slices are left?",5,[11,4],"🍕","8 − 3 = 5"],
+ ["A garden has 24 flowers. Half of the flowers are red. How many flowers are red?",12,[48,8],"🌹🌼","half of 24 is 24 ÷ 2 = 12"],
+ ["A pack has 12 pencils. One fourth of the pencils are blue. How many pencils are blue?",3,[8,16],"✏️✏️","one fourth of 12 is 12 ÷ 4 = 3"],
+ ["A school has 5 classes. Each class has 26 students. How many students are at the school?",130,[31,120],"🏫🧒","5 × 26 = 130"]
+];
 
 const $ = id => document.getElementById(id);
-let idx = 0, score = 0, answered = false, missed = [];
+let order = [], idx = 0, score = 0, answered = false, missed = [];
 
 function shuffle(arr){
   for (let i = arr.length - 1; i > 0; i--) {
@@ -143,20 +148,17 @@ function shuffle(arr){
   return arr;
 }
 
-// Wrong choices are plausible mistakes: using the wrong sign, being one or two off, or repeating a number from the story.
+// Wrong choices are common mistakes (wrong operation, forgetting a step or a carry), topped up with answers that are a little off.
 function makeOptions(q){
-  const [, a, b, op] = q;
-  const ans = op === "+" ? a + b : a - b;
-  const pool = [];
-  pool.push(op === "+" ? Math.abs(a - b) : a + b);   // used the wrong operation
-  pool.push(ans + 1, ans - 1, ans + 2, ans - 2, a, b);
-  const unique = [...new Set(pool)].filter(n => n >= 0 && n <= 25 && n !== ans);
-  const wrongOp = pool[0];
-  let chosen = [];
-  if (unique.includes(wrongOp)) chosen.push(wrongOp);
-  const rest = shuffle(unique.filter(n => !chosen.includes(n)));
-  while (chosen.length < 3 && rest.length) chosen.push(rest.pop());
-  return { ans, options: shuffle([ans, ...chosen]) };
+  const ans = q[1];
+  const wrong = [];
+  q[2].forEach(n => { if (n >= 0 && n !== ans && !wrong.includes(n)) wrong.push(n); });
+  const steps = ans >= 100 ? [10, 100] : ans >= 20 ? [1, 10] : [1, 2];
+  const cand = [];
+  steps.forEach(s => { cand.push(ans + s, ans - s); });
+  const fill = shuffle(cand).filter(n => n >= 0 && !wrong.includes(n) && n !== ans);
+  while (wrong.length < 3 && fill.length) wrong.push(fill.pop());
+  return shuffle([ans, ...wrong.slice(0, 3)]);
 }
 
 function show(el){ el.classList.remove("hidden"); }
@@ -167,68 +169,70 @@ function speak(text){
     if (!("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    u.rate = 0.85; u.pitch = 1.1;
+    u.rate = 0.9;
     window.speechSynthesis.speak(u);
   }catch(e){}
 }
 
+function fmt(q, n){ return (q[5] || "") + n; }
+
 function loadQuestion(){
   answered = false;
-  const q = QUESTIONS[idx];
-  const { ans, options } = makeOptions(q);
-  $("qnum").textContent = "Story " + (idx + 1) + " of " + QUESTIONS.length;
+  const q = order[idx];
+  const options = makeOptions(q);
+  $("qnum").textContent = "Story " + (idx + 1) + " of " + order.length;
   $("sc").textContent = "⭐ " + score;
-  $("prog").style.width = (idx / QUESTIONS.length * 100) + "%";
-  $("pic").textContent = q[4];
+  $("prog").style.width = (idx / order.length * 100) + "%";
+  $("pic").textContent = q[3];
   $("qtext").textContent = q[0];
   $("fb").textContent = ""; $("fb").className = "fb";
   $("nextBtn").style.display = "none";
   const box = $("opts"); box.innerHTML = "";
   options.forEach(n => {
     const btn = document.createElement("button");
-    btn.className = "opt"; btn.textContent = n;
-    btn.onclick = () => choose(btn, n, ans, q);
+    btn.className = "opt"; btn.textContent = fmt(q, n); btn.dataset.v = n;
+    btn.onclick = () => choose(btn, n, q);
     box.appendChild(btn);
   });
 }
 
-function choose(btn, n, ans, q){
+function choose(btn, n, q){
   if (answered) return;
   answered = true;
-  const eq = q[1] + " " + (q[3] === "+" ? "+" : "−") + " " + q[2] + " = " + ans;
+  const ans = q[1];
   [...$("opts").children].forEach(b => {
     b.disabled = true;
-    if (Number(b.textContent) === ans) b.classList.add("right");
+    if (Number(b.dataset.v) === ans) b.classList.add("right");
   });
   if (n === ans) {
     score++;
     $("sc").textContent = "⭐ " + score;
-    $("fb").textContent = "🎉 Great job! " + eq;
+    $("fb").textContent = "🎉 Correct! " + q[4];
     $("fb").className = "fb ok";
   } else {
     btn.classList.add("wrong");
-    missed.push({ text: q[0], eq, picked: n });
-    $("fb").textContent = "Good try! The answer is " + ans + ". " + eq;
+    missed.push({ text: q[0], work: q[4], picked: fmt(q, n), ans: fmt(q, ans) });
+    $("fb").textContent = "Not quite. The answer is " + fmt(q, ans) + ". " + q[4];
     $("fb").className = "fb no";
   }
-  $("nextBtn").textContent = idx === QUESTIONS.length - 1 ? "See my score 🏆" : "Next ➜";
+  $("nextBtn").textContent = idx === order.length - 1 ? "See my score 🏆" : "Next ➜";
   $("nextBtn").style.display = "block";
 }
 
 function finish(){
   hide($("quiz")); show($("end"));
-  const total = QUESTIONS.length;
+  const total = order.length;
   const pct = score / total;
   const stars = pct >= .9 ? 5 : pct >= .75 ? 4 : pct >= .6 ? 3 : pct >= .4 ? 2 : 1;
   $("endStars").textContent = "⭐".repeat(stars) + "☆".repeat(5 - stars);
   $("endScore").textContent = score + " / " + total;
-  $("endMsg").textContent = pct >= .9 ? "Super star! 🏆" : pct >= .75 ? "Awesome work! 🎉" : pct >= .5 ? "Nice try! Keep practising 💪" : "Good effort! Let's try again 🌈";
+  $("endMsg").textContent = pct >= .9 ? "Quest champion! 🏆" : pct >= .75 ? "Great work! 🎉" : pct >= .5 ? "Good try! Keep practising 💪" : "Nice effort! Try again 🌈";
   const r = $("review"); r.innerHTML = "";
   if (missed.length) {
     const h = document.createElement("h2"); h.textContent = "Let's look at these again 🔍"; r.appendChild(h);
     missed.forEach(m => {
       const d = document.createElement("div");
-      d.innerHTML = "<b></b><br>You picked " + m.picked + ". Right answer: <b>" + m.eq + "</b>";
+      d.innerHTML = "<b></b><br>You picked " + m.picked + ". Right answer: <b>" + m.ans + "</b> (" + m.work + ")";
       d.querySelector("b").textContent = m.text;
       r.appendChild(d);
     });
@@ -237,10 +241,18 @@ function finish(){
   }
 }
 
-$("startBtn").onclick = () => { hide($("start")); show($("quiz")); idx = 0; score = 0; missed = []; loadQuestion(); };
-$("nextBtn").onclick = () => { idx++; if (idx >= QUESTIONS.length) finish(); else loadQuestion(); };
+function begin(){
+  order = shuffle(QUESTIONS.slice());
+  idx = 0; score = 0; missed = [];
+  hide($("start")); hide($("end")); show($("quiz"));
+  loadQuestion();
+  window.scrollTo(0, 0);
+}
+
+$("startBtn").onclick = begin;
+$("againBtn").onclick = begin;
+$("nextBtn").onclick = () => { idx++; if (idx >= order.length) finish(); else loadQuestion(); };
 $("listenBtn").onclick = () => speak($("qtext").textContent);
-$("againBtn").onclick = () => { hide($("end")); show($("quiz")); idx = 0; score = 0; missed = []; loadQuestion(); window.scrollTo(0,0); };
 </script>
 </body>
 </html>
